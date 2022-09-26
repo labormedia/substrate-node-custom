@@ -1,4 +1,21 @@
-# Substrate Node Template
+# Substrate Node Custom
+
+This custom example adds a pallet "TemplateModule" with two main methods: 
+- setMember(club, candidate)
+- removeMember(club, candidate)
+
+Clubs are identified uniquely by u32 numbers, and candidates by T::AccountId type.
+
+To run:
+```
+git clone https://github.com/labormedia/substrate-node-custom.git
+git checkout autoupdate_polkadot-v0.9.28_2022-09-21_18-57-59
+cargo build --release
+RUST_LOG=runtime=debug ./target/release/node-template --dev -lpallet-template=debug
+
+```
+
+TODO: Solve the BadOrigin error when ensuring root account origin.
 
 [![Try on playground](https://img.shields.io/badge/Playground-Node_Template-brightgreen?logo=Parity%20Substrate)](https://docs.substrate.io/playground/) [![Matrix](https://img.shields.io/matrix/substrate-technical:matrix.org)](https://matrix.to/#/#substrate-technical:matrix.org)
 
@@ -229,20 +246,3 @@ by appending your own. A few useful ones are as follow.
 # Check whether the code is compilable
 ./scripts/docker_run.sh cargo check
 ```
-
-This custom example adds a pallet "TemplateModule" with two main methods: 
-- setMember(club, candidate)
-- removeMember(club, candidate)
-
-Clubs are identified uniquely by u32 numbers, and candidates by T::AccountId type.
-
-To run:
-```
-git clone https://github.com/labormedia/substrate-node-custom.git
-git checkout autoupdate_polkadot-v0.9.28_2022-09-21_18-57-59
-cargo build --release
-RUST_LOG=runtime=debug ./target/release/node-template --dev -lpallet-template=debug
-
-```
-
-TODO: Solve the BadOrigin error when ensuring root account origin.
