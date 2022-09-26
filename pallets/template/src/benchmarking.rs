@@ -8,12 +8,13 @@ use frame_benchmarking::{benchmarks, whitelisted_caller};
 use frame_system::RawOrigin;
 
 benchmarks! {
-	do_something {
+	set_member {
 		let s in 0 .. 100;
 		let caller: T::AccountId = whitelisted_caller();
-	}: _(RawOrigin::Signed(caller), s)
+	}: _(RawOrigin::root(), 42, RawOrigin::root())
 	verify {
-		assert_eq!(Something::<T>::get(), Some(s));
+		frame_support::debug(&Clubs::<T>::get(42, Origin::Root));
+		assert_eq!(Clubs::<T>::get(42, RawOrigin:root()), Some(1));
 	}
 
 	impl_benchmark_test_suite!(Template, crate::mock::new_test_ext(), crate::mock::Test);
