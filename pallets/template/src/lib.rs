@@ -69,8 +69,8 @@ pub mod pallet {
 			// Check that the extrinsic was signed and get the signer.
 			// This function will return an error if the extrinsic is not signed.
 			// https://docs.substrate.io/v3/runtime/origins
-			// ensure_root(origin)?;
 			let _who = ensure_signed(origin)?;
+			// ensure_root(_who)?;
 
 			// Iterate over members for a club.
 			for y in Clubs::<T>::iter_key_prefix(club) {

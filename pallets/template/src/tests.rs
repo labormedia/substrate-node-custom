@@ -16,6 +16,8 @@ fn it_works_for_default_value() {
 #[test]
 fn correct_error_for_none_value() {
 	new_test_ext().execute_with(|| {
+		// The anti-case will fail:
+		// let _set_member_test = TemplateModule::set_member(mock::Origin::signed(1), 42, 43);
 		// Ensure the expected error is thrown when no value is present.
 		assert_noop!(TemplateModule::cause_error(mock::Origin::signed(1), 42, 43), Error::<Test>::NoneValue);
 	});
